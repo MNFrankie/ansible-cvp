@@ -59,7 +59,7 @@ This repository is built based on [new collections system](https://docs.ansible.
 This collection requires the following to be installed on the Ansible control machine:
 
 
-- python `2.7` (legacy) and `3.7`
+- python `3.x`
 - ansible >= `2.9.0`
 - requests >= `2.22.0`
 - treelib version `1.5.5` or later
@@ -115,8 +115,8 @@ The docker container approach for development can be used to ensure that everybo
 - Build Docker image
 
 ```shell
-$ make build-docker
-$ make run-docker
+$ make docker-build
+$ make docker-run
 ```
 
 Image will be created using current branch as tag. If it is run in master branch, then latest git tag will be used as docker tag.

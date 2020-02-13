@@ -48,20 +48,12 @@ sanity-import: ## Run ansible-test sanity for code import
 #########################################
 # Docker actions					 	#
 #########################################
-.PHONY: build-docker2.7
-build-docker2.7: ## Build docker image for python 2.7
-	docker build -f Dockerfile-2.7 -t $(DOCKER_NAME):$(DOCKER_TAG)-2.7 .
+.PHONY: docker-build
+docker-build: ## Build docker image based on latest supported Python version
+	docker build -f Dockerfile -t $(DOCKER_NAME):$(DOCKER_TAG) .
 
-.PHONY: build-docker3
-build-docker3: ## Build docker image for python 3.0
-	docker build -f Dockerfile-3 -t $(DOCKER_NAME):$(DOCKER_TAG) .
-
-.PHONY: build-docker
-build-docker: ## Build docker image based on latest supported Python version
-	docker build -f Dockerfile-3 -t $(DOCKER_NAME):$(DOCKER_TAG) .
-
-.PHONY: run-docker
-run-docker: ## Connect to docker container
+.PHONY: docker-run
+docker-run: ## Connect to docker container
 	docker run -it --rm $(DOCKER_NAME):$(DOCKER_TAG) sh
 
 #########################################
